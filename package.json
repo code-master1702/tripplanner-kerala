@@ -4,7 +4,7 @@
   "description": "SAPUI5 Trip Planner - Hyderabad to Kerala with OData, Filters, Formatters, Sorting & Grouping",
   "main": "index.js",
   "scripts": {
-    "start": "ui5 serve -o index.html",
+    "start": "ui5 serve",
     "build": "ui5 build",
     "test": "echo \"No tests yet\" && exit 0"
   },

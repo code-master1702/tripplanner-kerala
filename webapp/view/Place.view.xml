@@ -1,0 +1,100 @@
+<mvc:View
+    controllerName="com.roshan.tripplanner.controller.Place"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    core:require="{
+        formatter: 'com/roshan/tripplanner/model/formatter'
+    }">
+
+    <!-- CONCEPTS USED:
+         1. Custom Formatters (formatPopularity, formatDaysNeeded)
+         2. core:require for loading modules in XML
+         3. SearchField with liveChange for filtering
+         4. Multiple Filters (search text + season dropdown)
+         5. Sorter with grouping by region
+    -->
+
+    <Page
+        id="placePage"
+        title="{i18n>placePageTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+        <content>
+            <!-- Search + Filter Toolbar -->
+            <Toolbar>
+                <Title text="{i18n>placeTitle}" />
+                <ToolbarSpacer />
+                <SearchField
+                    id="placeSearch"
+                    width="250px"
+                    placeholder="{i18n>searchPlaceholder}"
+                    liveChange=".onSearchPlaces" />
+                <Select
+                    id="seasonFilter"
+                    change=".onFilterBySeason">
+                    <items>
+                        <core:Item key="" text="All Seasons" />
+                        <core:Item key="Winter" text="🥶 Winter" />
+                        <core:Item key="Winter &amp; Summer" text="☀️ Winter &amp; Summer" />
+                        <core:Item key="Winter &amp; Monsoon" text="🌧️ Winter &amp; Monsoon" />
+                    </items>
+                </Select>
+            </Toolbar>
+
+            <!-- Sort Toolbar -->
+            <Toolbar>
+                <Button
+                    text="Sort by Popularity"
+                    icon="sap-icon://sort"
+                    press=".onSortByPopularity" />
+                <Button
+                    text="Group by Region"
+                    icon="sap-icon://group-2"
+                    press=".onGroupByRegion" />
+                <Button
+                    text="Reset"
+                    icon="sap-icon://reset"
+                    press=".onResetSort" />
+                <ToolbarSpacer />
+                <Label text="" id="placeCount" />
+            </Toolbar>
+
+            <!-- Places List -->
+            <List
+                id="placesList"
+                items="{places>/places}"
+                growing="true"
+                growingThreshold="10"
+                updateFinished=".onListUpdateFinished"
+                noDataText="{i18n>noDataText}">
+                <items>
+                    <ObjectListItem
+                        title="{places>city}"
+                        icon="{places>icon}"
+                        number="{path: 'places>popularity', formatter: 'formatter.formatPopularity'}"
+                        type="Active"
+                        press=".onPlacePress">
+                        <attributes>
+                            <ObjectAttribute text="📍 {i18n>mustVisitLabel}: {places>mustVisit}" />
+                            <ObjectAttribute text="🍛 {i18n>localItemsLabel}: {places>localItems}" />
+                            <ObjectAttribute text="📅 {i18n>bestMonthsLabel}: {places>bestMonths}" />
+                            <ObjectAttribute text="{path: 'places>daysNeeded', formatter: 'formatter.formatDaysNeeded'}" />
+                        </attributes>
+                        <firstStatus>
+                            <ObjectStatus
+                                text="{places>region}"
+                                state="Success" />
+                        </firstStatus>
+                        <secondStatus>
+                            <ObjectStatus
+                                text="{places>bestSeason}"
+                                state="Information" />
+                        </secondStatus>
+                    </ObjectListItem>
+                </items>
+            </List>
+        </content>
+    </Page>
+</mvc:View>

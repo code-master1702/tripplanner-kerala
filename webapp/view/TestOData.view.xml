@@ -1,0 +1,87 @@
+<mvc:View
+    controllerName="com.roshan.tripplanner.controller.TestOData"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Page title="OData Products Demo"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <MessageStrip
+                    text="This page fetches data from Northwind OData service and demonstrates Filters, Sorters, and Grouping"
+                    type="Information"
+                    showIcon="true"
+                    class="sapUiSmallMarginBottom" />
+
+                <Toolbar>
+                    <Title text="Northwind Products" />
+                    <ToolbarSpacer />
+                    <SearchField
+                        id="productSearch"
+                        width="250px"
+                        placeholder="Search product name..."
+                        search=".onFilterProducts" />
+                    <Select
+                        id="categoryFilter"
+                        change=".onFilterProducts">
+                        <items>
+                            <core:Item key="" text="All Categories" />
+                            <core:Item key="1" text="Beverages" />
+                            <core:Item key="2" text="Condiments" />
+                            <core:Item key="3" text="Confections" />
+                            <core:Item key="4" text="Dairy Products" />
+                            <core:Item key="5" text="Grains/Cereals" />
+                            <core:Item key="6" text="Meat/Poultry" />
+                            <core:Item key="7" text="Produce" />
+                            <core:Item key="8" text="Seafood" />
+                        </items>
+                    </Select>
+                </Toolbar>
+
+                <Toolbar>
+                    <Button text="Sort by Price" icon="sap-icon://sort" press=".onSortByPrice" />
+                    <Button text="Group by Category" icon="sap-icon://group-2" press=".onGroupByCategory" />
+                    <Button text="Reset" icon="sap-icon://reset" press=".onResetSort" />
+                    <ToolbarSpacer />
+                    <Label text="" id="productCount" />
+                </Toolbar>
+
+                <Table
+                    id="productsTable"
+                    items="{products>/results}"
+                    updateFinished=".onTableUpdateFinished"
+                    noDataText="Loading products... If empty, OData may be blocked by CORS."
+                    growing="true"
+                    growingThreshold="20">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Products" />
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column><Text text="Product Name" /></Column>
+                        <Column><Text text="Category ID" /></Column>
+                        <Column hAlign="End"><Text text="Price (USD)" /></Column>
+                        <Column hAlign="End"><Text text="Stock" /></Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <Text text="{products>ProductName}" />
+                            <Text text="{products>CategoryID}" />
+                            <ObjectNumber
+                                number="{products>UnitPrice}"
+                                unit="USD"
+                                state="{= ${products>UnitPrice} > 50 ? 'Error' : ${products>UnitPrice} > 20 ? 'Warning' : 'Success'}" />
+                            <ObjectNumber
+                                number="{products>UnitsInStock}"
+                                unit="units"
+                                state="{= ${products>UnitsInStock} &lt; 10 ? 'Error' : ${products>UnitsInStock} &lt; 30 ? 'Warning' : 'Success'}" />
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,44 @@
+{
+  "routes": [
+    {
+      "type": "Flight",
+      "travelTime": 1.5,
+      "baseCost": 4500,
+      "category": "Air",
+      "comfort": "High",
+      "icon": "sap-icon://flight"
+    },
+    {
+      "type": "Train (Express)",
+      "travelTime": 14,
+      "baseCost": 1200,
+      "category": "Rail",
+      "comfort": "Medium",
+      "icon": "sap-icon://bus-public-transport"
+    },
+    {
+      "type": "Train (Superfast)",
+      "travelTime": 18,
+      "baseCost": 800,
+      "category": "Rail",
+      "comfort": "Medium",
+      "icon": "sap-icon://bus-public-transport"
+    },
+    {
+      "type": "Bus (Sleeper)",
+      "travelTime": 16,
+      "baseCost": 1000,
+      "category": "Road",
+      "comfort": "Medium",
+      "icon": "sap-icon://cargo-train"
+    },
+    {
+      "type": "Bus (Semi-Sleeper)",
+      "travelTime": 18,
+      "baseCost": 700,
+      "category": "Road",
+      "comfort": "Low",
+      "icon": "sap-icon://cargo-train"
+    }
+  ]
+}

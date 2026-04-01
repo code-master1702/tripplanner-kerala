@@ -1,0 +1,143 @@
+<mvc:View
+    controllerName="com.roshan.tripplanner.controller.Stays"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    core:require="{
+        formatter: 'com/roshan/tripplanner/model/formatter'
+    }">
+
+    <Page
+        id="staysPage"
+        title="{i18n>staysPageTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+        <content>
+            <!-- Search + Filter Toolbar -->
+            <Toolbar>
+                <Title text="{i18n>staysTitle}" />
+                <ToolbarSpacer />
+                <SearchField
+                    id="ratingSearch"
+                    width="200px"
+                    placeholder="{i18n>searchByRating}"
+                    liveChange=".onSearchRating" />
+                <Select
+                    id="categorySelect"
+                    change=".onFilterByCategory">
+                    <items>
+                        <core:Item key="" text="All Categories" />
+                        <core:Item key="Budget" text="Budget" />
+                        <core:Item key="Comfort" text="Comfort" />
+                        <core:Item key="Luxury" text="Luxury" />
+                    </items>
+                </Select>
+            </Toolbar>
+
+            <VBox class="sapUiSmallMargin">
+
+                <!-- Selected Stay Info -->
+                <MessageStrip
+                    id="staySelectionStrip"
+                    text="Tap a stay to select it for your trip budget"
+                    type="Information"
+                    showIcon="true"
+                    class="sapUiSmallMarginBottom" />
+
+                <!-- Stays List — Single Select -->
+                <List
+                    id="staysList"
+                    items="{stays>/stays}"
+                    mode="SingleSelectMaster"
+                    selectionChange=".onStaySelect"
+                    noDataText="{i18n>noDataText}">
+                    <items>
+                        <ObjectListItem
+                            title="{stays>type}"
+                            icon="{stays>icon}"
+                            number="{path: 'stays>rating', formatter: 'formatter.formatRating'}"
+                            numberState="{path: 'stays>rating', formatter: 'formatter.formatRatingState'}"
+                            type="Active">
+                            <attributes>
+                                <ObjectAttribute text="{path: 'stays>priceRange', formatter: 'formatter.formatPriceRange'}" />
+                                <ObjectAttribute text="Avg: {path: 'stays>avgCostPerNight', formatter: 'formatter.formatCurrency'} /night" />
+                                <ObjectAttribute text="Category: {stays>category}" />
+                                <ObjectAttribute text="Amenities: {stays>amenities}" />
+                            </attributes>
+                        </ObjectListItem>
+                    </items>
+                </List>
+
+                <!-- Local Transport Panel — Single Select -->
+                <Panel
+                    id="transportPanel"
+                    headerText="{i18n>localTransportTitle}"
+                    class="sapUiResponsiveMargin">
+
+                    <MessageStrip
+                        text="Tap a transport mode to add it to your budget"
+                        type="Information"
+                        showIcon="true"
+                        class="sapUiSmallMarginBottom" />
+
+                    <List
+                        id="transportList"
+                        items="{stays>/localTransport}"
+                        mode="SingleSelectMaster"
+                        selectionChange=".onLocalTransportSelect"
+                        showSeparators="Inner">
+                        <items>
+                            <ObjectListItem
+                                title="{stays>mode}"
+                                icon="{stays>icon}"
+                                number="{stays>cost}"
+                                type="Active">
+                                <attributes>
+                                    <ObjectAttribute text="Avg: {path: 'stays>avgCostPerDay', formatter: 'formatter.formatCurrency'} /day" />
+                                    <ObjectAttribute text="When: {stays>whenToUse}" />
+                                </attributes>
+                            </ObjectListItem>
+                        </items>
+                    </List>
+                </Panel>
+
+                <!-- Budget Summary on Stays Page -->
+                <Panel
+                    headerText="Your Trip Budget"
+                    class="sapUiResponsiveMargin">
+                    <content>
+                        <VBox class="sapUiSmallMargin">
+                            <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                <Label text="Transport:" design="Bold" />
+                                <Text text="{= ${config>/selectedRoute} ? ${config>/selectedRoute/type} + ' - ' : 'Not selected - '}" />
+                                <Text text="{path: 'config>/transportCost', formatter: 'formatter.formatCurrency'}" />
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                <Label text="Stay ({config>/selectedDuration} nights):" design="Bold" />
+                                <Text text="{= ${config>/selectedStay} ? ${config>/selectedStay/type} + ' - ' : 'Not selected - '}" />
+                                <Text text="{path: 'config>/totalStayCost', formatter: 'formatter.formatCurrency'}" />
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                <Label text="Local Transport ({config>/selectedDuration} days):" design="Bold" />
+                                <Text text="{= ${config>/selectedLocalTransport} ? ${config>/selectedLocalTransport/mode} + ' - ' : 'Not selected - '}" />
+                                <Text text="{path: 'config>/totalLocalTransportCost', formatter: 'formatter.formatCurrency'}" />
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                <Label text="Food ({config>/selectedDuration} days):" design="Bold" />
+                                <Text text="{path: 'config>/totalFoodCost', formatter: 'formatter.formatCurrency'}" />
+                            </HBox>
+                            <ToolbarSpacer />
+                            <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+                                <Title text="TOTAL BUDGET:" level="H4" />
+                                <ObjectStatus
+                                    text="{path: 'config>/totalBudget', formatter: 'formatter.formatCurrency'}"
+                                    state="{path: 'config>/totalBudget', formatter: 'formatter.formatCostState'}" />
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

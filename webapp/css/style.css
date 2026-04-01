@@ -1,0 +1,114 @@
+/* ===================================
+   Trip Planner - Global Styles
+   =================================== */
+
+.tripPlannerApp {
+    font-family: "72", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* --- Total Budget Highlight --- */
+.totalBudgetText {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #0a6ed1;
+}
+
+/* --- Rating Stars --- */
+.ratingStars {
+    color: #f0ab00;
+    font-size: 1.1rem;
+}
+
+/* --- Place Card Styles --- */
+.placeCard {
+    border-left: 4px solid #0a6ed1;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background-color: #f7f7f7;
+    transition: background-color 0.2s ease;
+}
+
+.placeCard:hover {
+    background-color: #e8f4fd;
+}
+
+/* --- Stay Card Styles --- */
+.stayCard {
+    border-left: 4px solid #107e3e;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Transport Card Styles --- */
+.transportCard {
+    border-left: 4px solid #e9730c;
+    border-radius: 6px;
+    padding: 0.5rem;
+}
+
+/* --- Section Headers --- */
+.sectionHeader {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #354a5f;
+}
+
+/* --- Budget Panel --- */
+.budgetPanel .sapMPanelContent {
+    padding: 1rem;
+}
+
+.budgetHighlight {
+    background-color: #f0faff;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #d1e8ff;
+}
+
+/* --- Icon Badges --- */
+.iconBadge {
+    background-color: #0a6ed1;
+    color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    .totalBudgetText {
+        font-size: 1rem;
+    }
+
+    .placeCard {
+        border-left-width: 3px;
+        padding: 0.5rem;
+    }
+}
+
+/* --- Info Toolbar --- */
+.infoToolbar {
+    background-color: #e8f4fd;
+    border-radius: 4px;
+}
+
+/* --- Comfort Level Colors --- */
+.comfortHigh {
+    color: #107e3e;
+    font-weight: bold;
+}
+
+.comfortMedium {
+    color: #e9730c;
+    font-weight: bold;
+}
+
+.comfortLow {
+    color: #bb0000;
+    font-weight: bold;
+}

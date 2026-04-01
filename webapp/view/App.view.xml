@@ -1,0 +1,8 @@
+<mvc:View
+    controllerName="com.roshan.tripplanner.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <App id="app" class="tripPlannerApp">
+    </App>
+</mvc:View>

@@ -1,0 +1,148 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "com.roshan.tripplanner",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "routesData": {
+        "uri": "localService/routes.json",
+        "type": "JSON"
+      },
+      "placesData": {
+        "uri": "localService/places.json",
+        "type": "JSON"
+      },
+      "staysData": {
+        "uri": "localService/stays.json",
+        "type": "JSON"
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://flight",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleUrl": "i18n/i18n.properties"
+        }
+      },
+      "routes": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "routesData"
+      },
+      "places": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "placesData"
+      },
+      "stays": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "staysData"
+      },
+      "config": {
+        "type": "sap.ui.model.json.JSONModel"
+      }
+    },
+    "rootView": {
+      "viewName": "com.roshan.tripplanner.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "com.roshan.tripplanner.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "RouteRoutes",
+          "pattern": "",
+          "target": "TargetRoutes"
+        },
+        {
+          "name": "RoutePlace",
+          "pattern": "place",
+          "target": "TargetPlace"
+        },
+        {
+          "name": "RouteStays",
+          "pattern": "stays",
+          "target": "TargetStays"
+        },
+        {
+          "name": "RouteTestOData",
+          "pattern": "test",
+          "target": "TargetTestOData"
+        }
+      ],
+      "targets": {
+        "TargetRoutes": {
+          "viewType": "XML",
+          "viewName": "Routes",
+          "viewId": "routes"
+        },
+        "TargetPlace": {
+          "viewType": "XML",
+          "viewName": "Place",
+          "viewId": "place"
+        },
+        "TargetStays": {
+          "viewType": "XML",
+          "viewName": "Stays",
+          "viewId": "stays"
+        },
+        "TargetTestOData": {
+          "viewType": "XML",
+          "viewName": "TestOData",
+          "viewId": "testOData"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "places": [
+    {
+      "city": "Kochi (Cochin)",
+      "mustVisit": "Fort Kochi, Marine Drive, Mattancherry Palace, Chinese Fishing Nets",
+      "localItems": "Appam with Stew, Kerala Porotta, Seafood, Tender Coconut",
+      "bestSeason": "Winter",
+      "bestMonths": "October to March",
+      "region": "Central Kerala",
+      "popularity": 5,
+      "daysNeeded": 2,
+      "icon": "sap-icon://building"
+    },
+    {
+      "city": "Munnar",
+      "mustVisit": "Tea Gardens, Eravikulam National Park, Mattupetty Dam, Top Station",
+      "localItems": "Fresh Tea, Kerala Banana Chips, Cardamom",
+      "bestSeason": "Winter & Summer",
+      "bestMonths": "September to May",
+      "region": "Hill Station",
+      "popularity": 5,
+      "daysNeeded": 2,
+      "icon": "sap-icon://tree"
+    },
+    {
+      "city": "Alleppey (Alappuzha)",
+      "mustVisit": "Backwaters, Houseboat Cruises, Alleppey Beach, Kumarakom Bird Sanctuary",
+      "localItems": "Karimeen Pollichathu (Pearl Spot Fish), Toddy, Kerala Meals",
+      "bestSeason": "Winter",
+      "bestMonths": "November to February",
+      "region": "Backwaters",
+      "popularity": 5,
+      "daysNeeded": 2,
+      "icon": "sap-icon://shipping-status"
+    },
+    {
+      "city": "Thekkady (Periyar)",
+      "mustVisit": "Periyar Wildlife Sanctuary, Spice Plantations, Bamboo Rafting, Elephant Rides",
+      "localItems": "Fresh Spices (Cardamom, Pepper, Cloves), Organic Tea, Wild Honey",
+      "bestSeason": "Winter",
+      "bestMonths": "October to March",
+      "region": "Wildlife",
+      "popularity": 4,
+      "daysNeeded": 1,
+      "icon": "sap-icon://nutrition-activity"
+    },
+    {
+      "city": "Kovalam",
+      "mustVisit": "Kovalam Beach, Lighthouse Beach, Vizhinjam Marine Aquarium",
+      "localItems": "Seafood, Coconut-based dishes, Fresh Juices",
+      "bestSeason": "Winter",
+      "bestMonths": "September to March",
+      "region": "Beach",
+      "popularity": 4,
+      "daysNeeded": 1,
+      "icon": "sap-icon://waiver"
+    },
+    {
+      "city": "Wayanad",
+      "mustVisit": "Edakkal Caves, Soochipara Falls, Banasura Sagar Dam, Chembra Peak",
+      "localItems": "Coffee, Honey, Bamboo Rice, Spices",
+      "bestSeason": "Winter & Monsoon",
+      "bestMonths": "October to May",
+      "region": "Hill Station",
+      "popularity": 4,
+      "daysNeeded": 2,
+      "icon": "sap-icon://world"
+    },
+    {
+      "city": "Varkala",
+      "mustVisit": "Varkala Beach, Janardhana Swamy Temple, Varkala Cliff, Sivagiri Mutt",
+      "localItems": "Seafood, Banana Chips, Ayurvedic Products",
+      "bestSeason": "Winter",
+      "bestMonths": "November to February",
+      "region": "Beach",
+      "popularity": 3,
+      "daysNeeded": 1,
+      "icon": "sap-icon://waiver"
+    },
+    {
+      "city": "Kumarakom",
+      "mustVisit": "Kumarakom Bird Sanctuary, Backwater Cruises, Aruvikkuzhi Waterfall",
+      "localItems": "Fresh Fish, Toddy, Kerala Sadya",
+      "bestSeason": "Winter",
+      "bestMonths": "November to February",
+      "region": "Backwaters",
+      "popularity": 4,
+      "daysNeeded": 1,
+      "icon": "sap-icon://flight"
+    }
+  ]
+}

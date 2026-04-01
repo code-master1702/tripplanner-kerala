@@ -1,0 +1,158 @@
+<mvc:View
+    controllerName="com.roshan.tripplanner.controller.Routes"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    core:require="{
+        formatter: 'com/roshan/tripplanner/model/formatter',
+        Validation: 'com/roshan/tripplanner/utilities/Validation'
+    }">
+
+    <Page id="routesPage" title="{i18n>routesPageTitle}" showNavButton="false">
+        <content>
+            <VBox class="sapUiSmallMargin">
+
+                <!-- Duration Selection -->
+                <form:SimpleForm
+                    id="durationForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+                    emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+                    columnsXL="1" columnsL="1" columnsM="1"
+                    singleContainerFullSize="false">
+                    <form:content>
+                        <Label text="{i18n>selectDurationLabel}" />
+                        <SegmentedButton
+                            id="durationSelector"
+                            selectedKey="{config>/selectedDuration}"
+                            selectionChange=".onDurationChange">
+                            <items>
+                                <SegmentedButtonItem key="3" text="{i18n>days3}" />
+                                <SegmentedButtonItem key="4" text="{i18n>days4}" />
+                                <SegmentedButtonItem key="5" text="{i18n>days5}" />
+                                <SegmentedButtonItem key="7" text="{i18n>days7}" />
+                            </items>
+                        </SegmentedButton>
+                    </form:content>
+                </form:SimpleForm>
+
+                <!-- Routes List -->
+                <List
+                    id="routesList"
+                    headerText="{i18n>routesTitle}"
+                    items="{routes>/routes}"
+                    mode="SingleSelectMaster"
+                    selectionChange=".onRouteSelect">
+                    <items>
+                        <ObjectListItem
+                            title="{routes>type}"
+                            icon="{routes>icon}"
+                            number="{path: 'routes>baseCost', formatter: 'formatter.formatCurrency'}"
+                            numberState="{path: 'routes>baseCost', formatter: 'Validation.validateCost'}"
+                            numberUnit="one-way"
+                            type="Active">
+                            <attributes>
+                                <ObjectAttribute text="Travel Time: {path: 'routes>travelTime', formatter: 'formatter.formatTime'}" />
+                                <ObjectAttribute text="Category: {routes>category}" />
+                            </attributes>
+                            <firstStatus>
+                                <ObjectStatus
+                                    text="{routes>comfort}"
+                                    state="{path: 'routes>comfort', formatter: 'formatter.formatComfortState'}" />
+                            </firstStatus>
+                        </ObjectListItem>
+                    </items>
+                </List>
+
+                <!-- Budget Summary Panel -->
+                <Panel
+                    id="budgetPanel"
+                    headerText="{i18n>costBreakdownTitle}"
+                    class="sapUiResponsiveMargin"
+                    visible="{= ${config>/totalBudget} > 0 }">
+                    <content>
+                        <VBox class="sapUiSmallMargin">
+                            <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                <Label text="{i18n>transportCostLabel}:" design="Bold" />
+                                <ObjectStatus
+                                    text="{path: 'config>/transportCost', formatter: 'formatter.formatCurrency'}"
+                                    state="{= ${config>/transportCost} > 0 ? 'Success' : 'None'}" />
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                <Label text="Stay ({config>/selectedDuration} nights):" design="Bold" />
+                                <ObjectStatus
+                                    text="{path: 'config>/totalStayCost', formatter: 'formatter.formatCurrency'}"
+                                    state="{= ${config>/totalStayCost} > 0 ? 'Success' : 'None'}" />
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                <Label text="Local Transport ({config>/selectedDuration} days):" design="Bold" />
+                                <ObjectStatus
+                                    text="{path: 'config>/totalLocalTransportCost', formatter: 'formatter.formatCurrency'}"
+                                    state="{= ${config>/totalLocalTransportCost} > 0 ? 'Success' : 'None'}" />
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                <Label text="{i18n>foodCostLabel} ({config>/selectedDuration} days):" design="Bold" />
+                                <Text text="{path: 'config>/totalFoodCost', formatter: 'formatter.formatCurrency'}" />
+                            </HBox>
+                            <ToolbarSpacer />
+                            <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+                                <Title text="{i18n>totalBudgetLabel}:" level="H4" />
+                                <ObjectStatus
+                                    text="{path: 'config>/totalBudget', formatter: 'formatter.formatCurrency'}"
+                                    state="{path: 'config>/totalBudget', formatter: 'Validation.validateCost'}" />
+                            </HBox>
+
+                            <!-- Selected Items Summary -->
+                            <VBox class="sapUiSmallMarginTop">
+                                <MessageStrip
+                                    text="Route: {config>/selectedRoute/type}"
+                                    type="Information"
+                                    showIcon="true"
+                                    visible="{= !!${config>/selectedRoute} }"
+                                    class="sapUiTinyMarginBottom" />
+                                <MessageStrip
+                                    text="Stay: {config>/selectedStay/type}"
+                                    type="Information"
+                                    showIcon="true"
+                                    visible="{= !!${config>/selectedStay} }"
+                                    class="sapUiTinyMarginBottom" />
+                                <MessageStrip
+                                    text="Local Transport: {config>/selectedLocalTransport/mode}"
+                                    type="Information"
+                                    showIcon="true"
+                                    visible="{= !!${config>/selectedLocalTransport} }" />
+                            </VBox>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <!-- Navigation Buttons -->
+                <HBox justifyContent="Center" class="sapUiSmallMarginTop">
+                    <Button
+                        id="btnGoToPlaces"
+                        text="{i18n>navigateToPlacesButton}"
+                        icon="sap-icon://map"
+                        press=".onNavigateToPlaces"
+                        type="Emphasized"
+                        class="sapUiTinyMarginEnd" />
+                    <Button
+                        id="btnGoToStays"
+                        text="{i18n>navigateToStaysButton}"
+                        icon="sap-icon://building"
+                        press=".onNavigateToStays"
+                        type="Default"
+                        class="sapUiTinyMarginEnd" />
+                    <Button
+                        id="btnGoToOData"
+                        text="{i18n>navigateToODataButton}"
+                        icon="sap-icon://database"
+                        press=".onNavigateToOData"
+                        type="Default" />
+                </HBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

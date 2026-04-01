@@ -1,0 +1,108 @@
+{
+  "stays": [
+    {
+      "type": "Homestay",
+      "priceRange": "₹800 - ₹1,500 per night",
+      "avgCostPerNight": 1150,
+      "rating": 4.2,
+      "planDays": 3,
+      "amenities": "WiFi, Breakfast, Local Guide",
+      "category": "Budget",
+      "icon": "sap-icon://home"
+    },
+    {
+      "type": "Hostel",
+      "priceRange": "₹300 - ₹800 per night",
+      "avgCostPerNight": 550,
+      "rating": 3.8,
+      "planDays": 4,
+      "amenities": "Shared Kitchen, Locker, Common Area",
+      "category": "Budget",
+      "icon": "sap-icon://group"
+    },
+    {
+      "type": "Budget Hotel",
+      "priceRange": "₹1,000 - ₹2,000 per night",
+      "avgCostPerNight": 1500,
+      "rating": 3.5,
+      "planDays": 3,
+      "amenities": "AC, TV, Room Service",
+      "category": "Budget",
+      "icon": "sap-icon://building"
+    },
+    {
+      "type": "Mid-Range Hotel",
+      "priceRange": "₹2,000 - ₹4,000 per night",
+      "avgCostPerNight": 3000,
+      "rating": 4.0,
+      "planDays": 5,
+      "amenities": "Pool, Restaurant, WiFi, Gym",
+      "category": "Comfort",
+      "icon": "sap-icon://building"
+    },
+    {
+      "type": "Luxury Resort",
+      "priceRange": "₹5,000 - ₹15,000 per night",
+      "avgCostPerNight": 10000,
+      "rating": 4.8,
+      "planDays": 7,
+      "amenities": "Spa, Pool, Fine Dining, Butler Service",
+      "category": "Luxury",
+      "icon": "sap-icon://visits"
+    },
+    {
+      "type": "Houseboat (Backwaters)",
+      "priceRange": "₹8,000 - ₹20,000 per night",
+      "avgCostPerNight": 14000,
+      "rating": 4.7,
+      "planDays": 3,
+      "amenities": "Private Deck, Chef, Scenic Cruise, AC Rooms",
+      "category": "Luxury",
+      "icon": "sap-icon://shipping-status"
+    }
+  ],
+  "localTransport": [
+    {
+      "mode": "Kerala State Transport Bus",
+      "cost": "₹10 - ₹50 per journey",
+      "avgCostPerDay": 40,
+      "whenToUse": "Budget travel, city routes, frequent stops",
+      "icon": "sap-icon://bus-public-transport"
+    },
+    {
+      "mode": "Kerala KSRTC Express Bus",
+      "cost": "₹50 - ₹200 per journey",
+      "avgCostPerDay": 150,
+      "whenToUse": "Intercity travel, faster routes",
+      "icon": "sap-icon://bus-public-transport"
+    },
+    {
+      "mode": "Local Train",
+      "cost": "₹10 - ₹100 per journey",
+      "avgCostPerDay": 80,
+      "whenToUse": "Coastal routes (Kochi-Trivandrum), scenic journeys",
+      "icon": "sap-icon://cargo-train"
+    },
+    {
+      "mode": "Auto-Rickshaw",
+      "cost": "₹30 - ₹150 per ride",
+      "avgCostPerDay": 200,
+      "whenToUse": "Short distances, door-to-door, flexible",
+      "icon": "sap-icon://taxi"
+    },
+    {
+      "mode": "Taxi / Cab (Ola, Uber)",
+      "cost": "₹100 - ₹500 per ride",
+      "avgCostPerDay": 400,
+      "whenToUse": "Comfortable, direct routes, airport/station transfers",
+      "icon": "sap-icon://taxi"
+    },
+    {
+      "mode": "Rent a Scooter/Bike",
+      "cost": "₹300 - ₹600 per day",
+      "avgCostPerDay": 450,
+      "whenToUse": "Exploring hill stations, backwaters, full-day trips",
+      "icon": "sap-icon://car-rental"
+    }
+  ]
+}
